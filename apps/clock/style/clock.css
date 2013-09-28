@@ -19,6 +19,16 @@ html, body {
   height: 100%;
 }
 
+#settings {
+  width: 5.5rem;
+  height: 4rem;
+  background: transparent url('/style/icons/settings.png') no-repeat center / 3rem;
+  font-size: 0;
+  display: block;
+  bottom: 4em;
+  position: absolute;
+}
+
 #analog-clock.visible {
   display: block;
 }

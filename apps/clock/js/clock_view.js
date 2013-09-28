@@ -60,6 +60,11 @@ var ClockView = {
     return this.analog = document.getElementById('analog-clock');
   },
 
+  get settings() {
+    delete this.settings;
+    return this.settings = document.getElementById('settings');
+  },
+
   get time() {
     delete this.time;
     return this.time = document.getElementById('clock-time');
@@ -89,6 +94,7 @@ var ClockView = {
 
     this.analog.addEventListener('click', handler, false);
     this.digital.addEventListener('click', handler, false);
+    this.settings.addEventListener('click', this.openSettings.bind(this), false);
     this.hands = {};
     ['second', 'minute', 'hour'].forEach(function(hand) {
       this.hands[hand] = document.getElementById(hand + 'hand');
@@ -258,6 +264,20 @@ var ClockView = {
     var type = this.calAnalogClockType(AlarmList.getAlarmCount() + 1);
     this.container.className = 'marks' + type;
     document.getElementById('alarms').className = 'count' + type;
+  },
+
+  moveSettings: function cv_moveSettings() {
+    this.settings.style.bottom = 'calc(' + AlarmList.getAlarmCount() + ' * 6rem)';
+  },
+
+  openSettings: function cv_openSettings() {
+    new MozActivity({
+      name: 'configure',
+      data: {
+        target: 'device',
+        section: 'dateTime'
+      }
+    });
   },
 
   show: function cv_show(mode) {

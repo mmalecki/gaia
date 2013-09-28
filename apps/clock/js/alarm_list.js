@@ -65,6 +65,7 @@ var AlarmList = {
     AlarmsDB.getAlarmList(function al_gotAlarmList(err, list) {
       if (!err) {
         this.fillList(list);
+        ClockView.moveSettings();
       } else {
         console.error(err);
       }
@@ -118,6 +119,7 @@ var AlarmList = {
       if (this.count !== count) {
         this.count = count;
         ClockView.resizeAnalogClock();
+        ClockView.moveSettings();
       }
     }
     return li;
