@@ -1167,6 +1167,7 @@ ICAL.parse = (function() {
 
     state.stack = [root];
 
+    console.log(input);
     parser._eachLine(input, function(err, line) {
       parser._handleContentLine(line, state);
     });

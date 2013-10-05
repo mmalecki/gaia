@@ -149,6 +149,15 @@ Calendar.ns('Views').ViewEvent = (function() {
 
       this.setContent('alarms', alarmContent, 'innerHTML');
 
+      var attendees = '';
+      console.dir(this.event);
+      if (this.event.attendees && this.event.attendees.length) {
+        this.event.attendees.forEach(function (attendee) {
+          attendees += JSON.stringify(attendee);
+        });
+      }
+      this.setContent('attendees', attendees, 'innerHTML');
+
       this.setContent('description', model.description);
     },
 
